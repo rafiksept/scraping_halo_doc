@@ -66,7 +66,7 @@ category_array = []
 
 
 for category in categories : 
-    for i in range(1, 21):
+    for i in range(1, 100):
         url = f'https://magneto.api.halodoc.com/api/v1/buy-medicine/categories/{category}/products?page={i}&size=20'
 
 
