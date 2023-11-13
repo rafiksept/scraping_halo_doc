@@ -27,5 +27,5 @@ jobs:
       - name: execute py script # run main.py
         env:
           SERVICE_ACCOUNT_FILE: ${{ secrets.SERVICE_ACCOUNT_FILE }}
-        run: scrap_halo_doc.py
+        run: python scrap_halo_doc.py
           
