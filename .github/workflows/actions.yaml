@@ -1,4 +1,4 @@
-name: run scrape_bpom_direct_api_v2.py
+name: run scrap_halo_doc.py
 
 on:
   schedule:
