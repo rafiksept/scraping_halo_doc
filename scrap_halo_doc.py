@@ -1,9 +1,28 @@
 import requests
 import gspread
+import json
+import os 
+from dotenv import load_dotenv
+from google.oauth2.service_account import Credentials
 
-gc = gspread.service_account(filename="scraping-halo-doc-46727133631e.json")
+
+load_dotenv()
+
+SERVICE_ACCOUNT_FILE = os.getenv('SERVICE_ACCOUNT_FILE')
+
+scopes = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive'
+]
+
+credentials = Credentials.from_service_account_file(
+    json.loads(SERVICE_ACCOUNT_FILE),
+    scopes=scopes
+)
+
+gc = gspread.authorize(credentials)
+
 sh = gc.open("data nama halodoc").sheet1
-
 
 last_update = 0
 
