@@ -4,6 +4,7 @@ import json
 import os 
 from dotenv import load_dotenv
 from google.oauth2.service_account import Credentials
+import pandas as pd
 
 
 load_dotenv()
@@ -60,6 +61,10 @@ categories = ["disfungsi-ereksi", "hormon-wanita", "disfungsi-ereksi",
               ]
 
 
+name_obat = []
+category_array = []
+
+
 for category in categories : 
     for i in range(1, 21):
         url = f'https://magneto.api.halodoc.com/api/v1/buy-medicine/categories/{category}/products?page={i}&size=20'
@@ -74,8 +79,16 @@ for category in categories :
                 leng_data = len(data["result"])
                 for j in range(0 , leng_data) :
                     last_update = last_update + 1
-                    sh.update(f"a{last_update}", data["result"][j]["name"])
-                    sh.update(f"b{last_update}", category)
+                    name_obat.append(data["result"][j]["name"])
+                    category_array.append(category)
             else :
                 print("tidak ada data")
                 break
+
+
+df = pd.DataFrame({
+    "name" : name_obat,
+    "category" : category_array
+})
+
+df.to_csv("data_nama_obat.csv")
