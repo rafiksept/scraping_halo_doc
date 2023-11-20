@@ -25,7 +25,7 @@ deksripsi_array = []
 isi_deksripsi_array = []
 
 
-for i in range(15000, 17000 ):
+for i in range(17000, len(df) ):
     name = df["name"][i]
     print(f"Index ke - {i} Ambil data - {name}")
     url = f"https://www.halodoc.com/obat-dan-vitamin/{name}"
@@ -96,4 +96,4 @@ df_obat = pd.DataFrame({
     "isi_deksripsi" : isi_deksripsi_array 
 })
 
-df_obat.to_csv("data_obat11.csv")
+df_obat.to_csv("data_obat12.csv")
